@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>Instructions | নির্দেশনা - MSC Tragedy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+      background: #fdfdfd;
+      color: #333;
+    }
+    h1, h2 {
+      color: #004080;
+    }
+    code {
+      background: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .tag {
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: white;
+      margin-right: 4px;
+    }
+    .urgent { background: red; }
+    .critical { background: orange; }
+    .stable { background: green; }
+    pre {
+      background: #f3f3f3;
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      padding: 6px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+    a {
+      color: #0066cc;
+    }
+    .col {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .en, .bn {
+      flex: 1 1 400px;
+    }
+    hr {
+      margin: 40px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🕊️ Instructions | নির্দেশনা</h1>
+
+  <div class="col">
+    <div class="en">
+      <h2>🔍 Purpose</h2>
+      <ul>
+        <li>Identify students and staff by name, class, photo, or guardian info</li>
+        <li>Filter by blood group, class, or status (forever, missing, hospitalized)</li>
+        <li>View hospital and contact info if available</li>
+        <li>Submit “📤 Report Found” or “📞 Request Info” for any victim</li>
+      </ul>
+    </div>
+    <div class="bn">
+      <h2>🔍 উদ্দেশ্য</h2>
+      <ul>
+        <li>শিক্ষার্থী ও স্টাফদের নাম, ক্লাস, ছবি বা অভিভাবকের তথ্য দিয়ে খোঁজ করা</li>
+        <li>রক্তের গ্রুপ, শ্রেণী বা অবস্থা (চিরবিদায়, নিখোঁজ, হাসপাতালে) অনুযায়ী ফিল্টার</li>
+        <li>হাসপাতাল এবং যোগাযোগ তথ্য (যদি থাকে) দেখা</li>
+        <li>“📤 পাওয়া গেছে” বা “📞 তথ্য জানতে চাই” সাবমিট করা</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="col">
+    <div class="en">
+      <h2>⚙️ Features</h2>
+      <ul>
+        <li>Fast-loading static site with no backend</li>
+        <li>Victim data from <code>victims.json</code></li>
+        <li>Lightbox photo viewer</li>
+        <li>Filter by class, blood group, or status</li>
+        <li>Risk level tags:
+          <span class="tag urgent">🔴 Urgent</span>
+          <span class="tag critical">🟡 Critical</span>
+          <span class="tag stable">🟢 Stable</span>
+        </li>
+        <li>Mobile-friendly responsive design</li>
+        <li>Form buttons auto-fill Victim ID</li>
+        <li>Disclaimer and last updated timestamp</li>
+      </ul>
+    </div>
+    <div class="bn">
+      <h2>⚙️ সুবিধাসমূহ</h2>
+      <ul>
+        <li>দ্রুত লোড হয় এমন স্ট্যাটিক সাইট (ব্যাকএন্ড ছাড়াই)</li>
+        <li>সব ডেটা আসে <code>victims.json</code> ফাইল থেকে</li>
+        <li>ছবির জন্য লাইটবক্স ভিউয়ার</li>
+        <li>শ্রেণী, রক্তের গ্রুপ বা স্ট্যাটাস অনুযায়ী ফিল্টার</li>
+        <li>রিস্ক ট্যাগ:
+          <span class="tag urgent">🔴 জরুরি</span>
+          <span class="tag critical">🟡 আশঙ্কাজনক</span>
+          <span class="tag stable">🟢 স্থিতিশীল</span>
+        </li>
+        <li>মোবাইল ফ্রেন্ডলি ডিজাইন</li>
+        <li>ফর্মে স্বয়ংক্রিয়ভাবে Victim ID পূরণ হয়</li>
+        <li>Disclaimer এবং আপডেটের সময় দেখা যায়</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="col">
+    <div class="en">
+      <h2>🧠 Victim Fields</h2>
+      <table>
+        <tr><th>Field</th><th>Description</th></tr>
+        <tr><td>Victim ID</td><td>Unique like <code>v001</code></td></tr>
+        <tr><td>Student ID</td><td>e.g. <code>S-2302</code></td></tr>
+        <tr><td>Name</td><td>Full name</td></tr>
+        <tr><td>Parents</td><td>Guardian names</td></tr>
+        <tr><td>Class / Section</td><td>e.g. Class 5, Section A</td></tr>
+        <tr><td>Shift</td><td>Morning or Day</td></tr>
+        <tr><td>Status</td><td>forever, missing, hospitalized</td></tr>
+        <tr><td>Blood Group</td><td>A+, B-, etc.</td></tr>
+        <tr><td>Hospital</td><td>Name if admitted</td></tr>
+        <tr><td>Contact</td><td>Guardian or helper phone</td></tr>
+        <tr><td>Photo</td><td><code>photos/victimID.jpg</code></td></tr>
+      </table>
+    </div>
+    <div class="bn">
+      <h2>🧠 ভুক্তভোগীর তথ্য</h2>
+      <table>
+        <tr><th>তথ্য</th><th>বর্ণনা</th></tr>
+        <tr><td>Victim ID</td><td><code>v001</code> এর মতো ইউনিক আইডি</td></tr>
+        <tr><td>Student ID</td><td><code>S-2302</code> ইত্যাদি</td></tr>
+        <tr><td>নাম</td><td>পূর্ণ নাম</td></tr>
+        <tr><td>অভিভাবক</td><td>পিতা-মাতার নাম</td></tr>
+        <tr><td>শ্রেণী / সেকশন</td><td>যেমনঃ ৫ম শ্রেণী, A</td></tr>
+        <tr><td>শিফট</td><td>সকাল / দুপুর</td></tr>
+        <tr><td>অবস্থা</td><td>চিরবিদায়, নিখোঁজ, হাসপাতালে</td></tr>
+        <tr><td>রক্তের গ্রুপ</td><td>A+, B- ইত্যাদি</td></tr>
+        <tr><td>হাসপাতাল</td><td>যেখানে ভর্তি</td></tr>
+        <tr><td>যোগাযোগ</td><td>অভিভাবকের ফোন</td></tr>
+        <tr><td>ছবি</td><td><code>photos/victimID.jpg</code></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="col">
+    <div class="en">
+      <h2>📁 Project Structure</h2>
+      <pre>
+📁 /
+├── index.html
+├── victims.json
+├── script.js
+├── style.css
+├── disclaimer.html
+├── instructions.html
+└── photos/
+      </pre>
+    </div>
+    <div class="bn">
+      <h2>📁 প্রজেক্ট ফাইলের গঠন</h2>
+      <pre>
+📁 /
+├── index.html
+├── victims.json
+├── script.js
+├── style.css
+├── disclaimer.html
+├── instructions.html
+└── photos/
+      </pre>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="col">
+    <div class="en">
+      <h2>✍️ Contributing</h2>
+      <p>You can contribute by:</p>
+      <ul>
+        <li>Adding new victim data in <code>victims.json</code></li>
+        <li>Uploading photos to <code>photos/victimID.jpg</code></li>
+        <li>Submitting a pull request on GitHub</li>
+      </ul>
+    </div>
+    <div class="bn">
+      <h2>✍️ অবদান রাখতে চাইলে</h2>
+      <p>আপনি নিচেরভাবে সাহায্য করতে পারেন:</p>
+      <ul>
+        <li><code>victims.json</code> এ নতুন তথ্য যুক্ত করুন</li>
+        <li><code>photos/victimID.jpg</code> হিসেবে ছবি আপলোড করুন</li>
+        <li>GitHub এ Pull Request পাঠান</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="col">
+    <div class="en">
+      <h2>⚠️ Disclaimer</h2>
+      <p>
+        This site is unofficial and contains data from community volunteers.  
+        For verified info, contact the school or authorities.
+        <a href="disclaimer.html">View full disclaimer</a>.
+      </p>
+    </div>
+    <div class="bn">
+      <h2>⚠️ ঘোষণা</h2>
+      <p>
+        এই ওয়েবসাইটের তথ্য অফিসিয়াল নয়। সব তথ্য এসেছে স্বেচ্ছাসেবী ও প্রতিবেদন থেকে।  
+        নিশ্চিত তথ্যের জন্য স্কুল বা প্রশাসনের সাথে যোগাযোগ করুন।  
+        <a href="disclaimer.html">পূর্ণ ঘোষণা দেখুন</a>।
+      </p>
+    </div>
+  </div>
+
+  <hr />
+
+  <p style="text-align:center; font-style: italic;">
+    May this platform help bring clarity and hope to the families affected.  
+    এই প্ল্যাটফর্মটি যেন পরিবারগুলোর জন্য সহায়ক হয় — এই দোয়া 💙
+  </p>
+
+</body>
+</html>
