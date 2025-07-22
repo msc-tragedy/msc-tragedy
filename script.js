@@ -3,7 +3,7 @@ async function loadVictims() {
   const victims = await response.json();
   const tbody = document.querySelector('#victimTable tbody');
   const searchInput = document.getElementById('searchInput');
-  const formBase = "https://tally.so/r/3j8Akx";
+  const formBase = "https://tally.so/r/wo8L5e";
 
   const riskLabel = {
     urgent: '🔴 Urgent',
@@ -38,6 +38,24 @@ async function loadVictims() {
       tbody.appendChild(row);
     });
   }
+
+  const shareBtn = document.getElementById("shareBtn");
+
+  shareBtn.addEventListener("click", async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "MSC Tragedy Victim Index",
+          text: `🕊️ MSC School Plane Crash – Victim Identification Portal\nSearch by name, class, photo, or blood group.\n📍 Missing / Hospitalized / Deceased – all listed to support families.\n💻 Visit now: https://msc-tragedy.github.io\nPlease share and help someone in need 💙`,
+          url: "https://msc-tragedy.github.io"
+        });
+      } catch (err) {
+        alert("Sharing cancelled or failed.");
+      }
+    } else {
+      alert("Sharing not supported on this device. Please copy and share manually.");
+    }
+  });
 
   function applyFilters() {
     const status = document.getElementById('filterStatus').value.toLowerCase();
