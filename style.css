@@ -1,0 +1,94 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  padding: 20px;
+}
+h1 { text-align: center; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+th, td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+img {
+  cursor: pointer;
+}
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.filters select, #searchInput {
+  padding: 6px;
+  margin-top: 10px;
+}
+.btn {
+  display: inline-block;
+  margin: 3px 0;
+  padding: 4px 6px;
+  font-size: 12px;
+  color: white;
+  background-color: #007acc;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.btn:hover {
+  background-color: #005c99;
+}
+.risk-tag {
+  display: inline-block;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: white;
+}
+.risk-urgent { background-color: red; }
+.risk-critical { background-color: orange; }
+.risk-stable { background-color: green; }
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+}
+.lightbox-content {
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 80%;
+  padding-top: 60px;
+}
+.close {
+  position: absolute;
+  top: 20px; right: 35px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr {
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  td {
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+}
