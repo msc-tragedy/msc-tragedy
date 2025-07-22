@@ -19,18 +19,18 @@ async function loadVictims() {
       row.innerHTML = `
         <td><img src="${photoPath}" alt="${v.name}" class="clickable-photo" data-src="${photoPath}" width="50" height="60" /></td>
         <td>${v.occupation || '-'}</td>
-        <td>${v.studentId}</td>
-        <td>${v.name}</td>
-        <td>${v.class}</td>
-        <td>${v.section}</td>
-        <td>${v.shift}</td>
-        <td>${v.parents}</td>
-        <td>${v.status}</td>
-        <td>${v.bloodGroup}</td>
+        <td>${v.studentId || '-'}</td>
+        <td>${v.name || '-'}</td>
+        <td>${v.class || '-'}</td>
+        <td>${v.section || '-'}</td>
+        <td>${v.shift || '-'}</td>
+        <td>${v.parents || '-'}</td>
+        <td>${v.status || '-'}</td>
+        <td>${v.bloodGroup || '-'}</td>
         <td>${v.hospital || '-'}</td>
         <td>
           ${v.contact || '-'}<br>
-          <span class="risk-tag risk-${v.riskLevel}">${riskLabel[v.riskLevel]}</span><br>
+          <span class="risk-tag risk-${v.riskLevel || '-'}">${riskLabel[v.riskLevel] || '-'}</span><br>
           <a class="btn" href="${formBase}" target="_blank">📤 Report Found</a>
           <a class="btn" href="${formBase}" target="_blank">📞 Request Info</a>
         </td>
