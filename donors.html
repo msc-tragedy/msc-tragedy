@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donors List</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { text-align: center; }
+        .filters { margin-bottom: 20px; }
+        .donor-list { margin-top: 20px; }
+        .donor { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>🩸 Blood Donors List</h1>
+
+    <div class="filters">
+        <h3>All Blood Groups</h3>
+        <select id="bloodGroupFilter">
+            <option value="all">All</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+        </select>
+
+        <h3>Availability</h3>
+        <select id="availabilityFilter">
+            <option value="all">Any</option>
+            <option value="Available">Available</option>
+            <option value="Maybe">Maybe</option>
+            <option value="Not Available">Not Available</option>
+        </select>
+    </div>
+
+    <div id="donorList" class="donor-list"></div>
+
+    <script>
+        // Fetch and display donors
+        async function fetchDonors() {
+            try {
+                const response = await fetch('blood-donors.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                return data.donors;
+            } catch (error) {
+                console.error('Error fetching donors:', error);
+                document.getElementById('donorList').innerHTML = '<p>Error loading donors. Please try again later.</p>';
+                return [];
+            }
+        }
+
+        // Display donors based on filters
+        function displayDonors(donors, bloodGroupFilter, availabilityFilter) {
+            const donorList = document.getElementById('donorList');
+            donorList.innerHTML = ''; // Clear previous content
+
+            donors.forEach(group => {
+                if (bloodGroupFilter === 'all' || group.bloodGroup === bloodGroupFilter) {
+                    group.donors.forEach(donor => {
+                        if (availabilityFilter === 'all' || donor.availability === availabilityFilter) {
+                            const donorDiv = document.createElement('div');
+                            donorDiv.className = 'donor';
+                            donorDiv.innerHTML = `
+                                <strong>Name:</strong> ${donor.name}<br>
+                                <strong>Blood Group:</strong> ${group.bloodGroup}<br>
+                                <strong>Phone:</strong> ${Array.isArray(donor.phone) ? donor.phone.join(', ') : donor.phone}<br>
+                                <strong>Availability:</strong> ${donor.availability}
+                            `;
+                            donorList.appendChild(donorDiv);
+                        }
+                    });
+                }
+            });
+
+            if (donorList.innerHTML === '') {
+                donorList.innerHTML = '<p>No donors match the selected criteria.</p>';
+            }
+        }
+
+        // Initialize page
+        async function init() {
+            const donors = await fetchDonors();
+            const bloodGroupFilter = document.getElementById('bloodGroupFilter');
+            const availabilityFilter = document.getElementById('availabilityFilter');
+
+            // Initial display
+            displayDonors(donors, 'all', 'all');
+
+            // Add event listeners for filters
+            bloodGroupFilter.addEventListener('change', () => {
+                displayDonors(donors, bloodGroupFilter.value, availabilityFilter.value);
+            });
+            availabilityFilter.addEventListener('change', () => {
+                displayDonors(donors, bloodGroupFilter.value, availabilityFilter.value);
+            });
+        }
+
+        // Run initialization
+        init();
+    </script>
+</body>
+</html>
