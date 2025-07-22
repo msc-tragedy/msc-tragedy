@@ -3,7 +3,7 @@ async function loadVictims() {
   const victims = await response.json();
   const tbody = document.querySelector('#victimTable tbody');
   const searchInput = document.getElementById('searchInput');
-  const formBase = "https://tally.so/r/wo8L5e?Victim-ID=";
+  const formBase = "https://tally.so/r/wo8L5e";
 
   const riskLabel = {
     urgent: '🔴 Urgent',
