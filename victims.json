@@ -98,10 +98,10 @@
     "section": "Sky",
     "shift": null,
     "parents": null,
-    "status": "missing",
+    "status": "forever",
     "bloodGroup": null,
-    "hospital": null,
-    "contact": "01917298536",
+    "hospital": "Combined Medical Hospital (CMH), DHaka",
+    "contact": null,
     "riskLevel": null
   },
   {
